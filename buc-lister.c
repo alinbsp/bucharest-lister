@@ -7,12 +7,8 @@
 #define DLLEXPORT extern
 #endif
 
-void create_db( const char *db_name ) {
+void open_db( const char *db_name ) {
   KCDB* db;
-  KCCUR* cur;
-  char *kbuf, *vbuf;
-  size_t ksiz, vsiz;
-  const char *cvbuf;
 
   /* create the database object */
   db = kcdbnew();

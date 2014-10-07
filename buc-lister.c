@@ -7,7 +7,7 @@
 #define DLLEXPORT extern
 #endif
 
-void open_db( const char *db_name ) {
+KCDB* open_db( const char *db_name ) {
   KCDB* db;
 
   /* create the database object */
@@ -17,4 +17,6 @@ void open_db( const char *db_name ) {
   if (!kcdbopen(db, db_name, KCOWRITER | KCOCREATE)) {
     fprintf(stderr, "open error: %s\n", kcecodename(kcdbecode(db)));
   }
+
+  return db;
 }

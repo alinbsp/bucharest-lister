@@ -29,5 +29,19 @@ void store_db( KCDB* db, char *key, char *value ) {
   if (!kcdbset(db, key, ksiz, value, vsiz))  {
     fprintf(stderr, "set error: %s\n", kcecodename(kcdbecode(db)));
   } 
-} 
+}
+
+char* retrieve_db( KCDB* db, char *key) {
+  size_t ksiz = strlen(key);
+  size_t vsiz;
+
+  char* vbuf = kcdbget(db, key, ksiz, &vsiz);
+  char* tm;
+  if (vbuf) {
+    return vbuf;
+    kcfree(vbuf);
+  } else {
+    return tm;
+  }
+}
 

@@ -21,3 +21,13 @@ KCDB* open_db( const char *db_name ) {
   return db;
 }
 
+void store_db( KCDB* db, char *key, char *value ) {
+    /* store record */
+  size_t ksiz = strlen(key);
+  size_t vsiz = strlen(value);
+
+  if (!kcdbset(db, key, ksiz, value, vsiz))  {
+    fprintf(stderr, "set error: %s\n", kcecodename(kcdbecode(db)));
+  } 
+} 
+

@@ -20,3 +20,4 @@ KCDB* open_db( const char *db_name ) {
 
   return db;
 }
+

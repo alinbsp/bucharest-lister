@@ -2,8 +2,6 @@ module BucharestLister;
 
 use NativeCall;
 
-my $handler;
-
 sub create_db(Str) 
 	returns OpaquePointer
 	is native('./buc-lister') 
@@ -18,14 +16,23 @@ sub get_db(OpaquePointer, Str)
 	is native('./buc-lister')
 	is symbol('retrieve_db') { * }
 
-sub open(Str $name) is export {
-	$handler = create_db("$name.kch");
+class Db is export {
+  has $!handler;
+
+  # method new() {
+  # 	create_db("$.handler.kch");
+  # }
+  submethod BUILD(:$!handler) { 
+    create_db("$!handler.kch");
+  }
+
+  method set(Str $key, Str $value) {
+  	store_db($.handler, $key, $value);
+  }
+
+  method get(Str $key) {
+  	return get_db($.handler, $key);
+  }
 }
 
-sub set(Str $key, Str $value) is export {
-	store_db($handler, $key, $value);
-}
-
-sub get(Str $key) is export {
-	return get_db($handler, $key);
-}
+# vi: filetype=perl6: 

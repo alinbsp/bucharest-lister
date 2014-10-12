@@ -1,2 +1,3 @@
 use BucharestLister;
-open("erpb");
+
+my $db = Db.new( handler => "noper" );

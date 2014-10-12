@@ -22,7 +22,7 @@ KCDB* open_db( const char *db_name ) {
 }
 
 void store_db( KCDB* db, char *key, char *value ) {
-    /* store record */
+  /* store record */
   size_t ksiz = strlen(key);
   size_t vsiz = strlen(value);
 
@@ -32,6 +32,7 @@ void store_db( KCDB* db, char *key, char *value ) {
 }
 
 char* retrieve_db( KCDB* db, char *key) {
+  /* retrive record value */
   size_t ksiz = strlen(key);
   size_t vsiz;
 

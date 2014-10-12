@@ -17,18 +17,19 @@ sub get_db(OpaquePointer, Str)
 	is symbol('retrieve_db') { * }
 
 class Db is export {
-  has $!handler;
+  has $!name;
+  my $handler;
 
-  submethod BUILD(:$!handler) { 
-    create_db("$!handler.kch");
+  submethod BUILD(:$!name) { 
+    $handler = create_db("$!name.kch");
   }
 
   method set(Str $key, Str $value) {
-  	store_db($.handler, $key, $value);
+  	store_db($handler, $key, $value);
   }
 
   method get(Str $key) {
-  	return get_db($.handler, $key);
+  	return get_db($handler, $key);
   }
 }
 

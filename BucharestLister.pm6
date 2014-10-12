@@ -19,9 +19,6 @@ sub get_db(OpaquePointer, Str)
 class Db is export {
   has $!handler;
 
-  # method new() {
-  # 	create_db("$.handler.kch");
-  # }
   submethod BUILD(:$!handler) { 
     create_db("$!handler.kch");
   }

@@ -3,18 +3,18 @@ module BucharestLister;
 use NativeCall;
 
 sub create_db(Str) 
-	returns OpaquePointer
-	is native('./buc-lister') 
-	is symbol('open_db') { * }
+  returns OpaquePointer
+  is native('./buc-lister') 
+  is symbol('open_db') { ... }
 
 sub store_db(OpaquePointer, Str, Str)
-	is native('./buc-lister')
-	is symbol('store_db') { * }
+  is native('./buc-lister')
+  is symbol('store_db') { ... }
 
 sub get_db(OpaquePointer, Str)
-	returns Str
-	is native('./buc-lister')
-	is symbol('retrieve_db') { * }
+  returns Str
+  is native('./buc-lister')
+  is symbol('retrieve_db') { ... }
 
 class Db is export {
   has $!name;

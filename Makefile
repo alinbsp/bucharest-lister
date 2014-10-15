@@ -9,8 +9,8 @@ buc-lister.o: buc-lister.c
 clean:
 	rm -rf *o *dylib
 
-install: BucharestLister.pm6 buc-lister.dylib
-	cp BucharestLister.pm6 /Users/alini/notes/rakudo/install/languages/perl6/lib/BucharestLister.pm6
+install: lib/BucharestLister.pm6 buc-lister.dylib
+	cp lib/BucharestLister.pm6 /Users/alini/notes/rakudo/install/languages/perl6/lib/BucharestLister.pm6
 	cp buc-lister.dylib /Users/alini/notes/rakudo/install/languages/perl6/lib/buc-lister.dylib
 
 uninstall:
